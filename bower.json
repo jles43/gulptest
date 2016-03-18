@@ -1,0 +1,22 @@
+{
+  "name": "gulptest",
+  "description": "Test of project infrastructure with GULP as build engine",
+  "main": "index.js",
+  "authors": [
+    "Jauhen Leskavetz"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jles43/gulptest",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.1"
+  }
+}
