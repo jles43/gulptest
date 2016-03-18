@@ -1,3 +1,4 @@
+/*jshint node:true*/
 'use strict';
 
 const lib = require('./lib');
