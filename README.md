@@ -1,3 +1,3 @@
 # gulptest
 
-Code of test project for GULP.
+Code of test project with GULP as build engine.
