@@ -8,19 +8,28 @@ var packageJSON = require('./package');
 var jshintConfig = packageJSON.jshintConfig;
 jshintConfig.lookup = false;
 
+var js5dir = 'js5', srcdir = 'src';
+var paths = {
+  src: srcdir+'/**/*.js',
+  js5: js5dir+'/**/*.js'
+};
+
 gulp.task('default', function() {
   console.log('default task started');
 });
 
-gulp.task('babel', function() {
-  return gulp.src('src/**/*.js')
+gulp.task('babel', ['lint'], function() {
+  return gulp.src(paths.src)
     .pipe(babel({presets: ['es2015']}))
-    .pipe(gulp.dest('js5'));
+    .pipe(gulp.dest(js5dir));
 });
 
-var lintsrc = 'src';
 gulp.task('lint', function() {
-  return gulp.src(lintsrc+'/**/*.js')
+  return gulp.src(paths.src)
     .pipe(jshint(jshintConfig))
     .pipe(jshint.reporter('default'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch(paths.src, ['babel']);
 });
