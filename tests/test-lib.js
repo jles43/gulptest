@@ -37,4 +37,32 @@ describe('MultiplyCheck', function() {
       mc.expected.should.be.exactly(mc.opd1*mc.opd2);
     })
   });
+  describe('#_gen', function() {
+    it('should generate non-repeating pairs of numbers', function() {
+      var mc  = new lib.MultiplyCheck(), i;
+      var curpair, // current pair
+          pair_1,  // "pair-1" (previous pair)
+          pair_2;  // "pair-2" (pre-previous pair)
+      for (i=1, pair_1=pair_2=null; i<=100; i++) {
+        curpair = '' + mc._gen() + '*' + mc._gen();
+        if (curpair==pair_1)
+          curpair.should.not.be.equal(pair_2);
+        pair_2 = pair_1;
+        pair_1 = curpair;
+      }
+    });
+    it('should generate all numbers between 2 and 9', function() {
+      var mc = new lib.MultiplyCheck();
+      var reg = ['0','0','0','0','0','0','0','0','0','0']; // 0 to 9
+      var i, n, s;
+      for (i=1; i<=1000; i++) {
+        n = mc._gen();
+        n.should.be.above(1);
+        n.should.be.below(10);
+        reg[n] = '1';
+      }
+      s = reg.join('');
+      s.should.be.exactly('0011111111');
+    });
+  });
 });
