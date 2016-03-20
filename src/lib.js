@@ -18,7 +18,7 @@ class MultiplyCheck {
   }
   // generates a number between ´this.min´ and ´this.max´
   _gen() {
-    return Math.floor(Math.random()*(this.max-this.min))+this.min;
+    return Math.floor(Math.random()*(this.max-this.min+1))+this.min;
   }
   // calculates the result of operation ´this.op´ for parameters a and b
   _calc(a, b) {
